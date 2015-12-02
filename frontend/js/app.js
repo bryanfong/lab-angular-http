@@ -5,6 +5,9 @@ angular.module('criminalApp', [])
   $scope.newCriminal = {};
   $scope.addCriminal = addCriminal;
   $scope.deleteCriminal = deleteCriminal;
+  $scope.showCriminal = showCriminal;
+  $scope.editCriminal = {};
+  $scope.updateCriminal = updateCriminal;
 
   getCriminals();
 
@@ -25,6 +28,10 @@ angular.module('criminalApp', [])
     $scope.newCriminal ={}
   }
 
+  function showCriminal(criminal){
+    $scope.editCriminal = criminal;
+  }
+
   function deleteCriminal(id){
     $http
       .delete('http://localhost:3000/criminals/' + id)
@@ -33,5 +40,12 @@ angular.module('criminalApp', [])
       })
   }
 
+  function updateCriminal(){
+    $http
+      .patch('http://localhost:3000/criminals/' + $scope.editCriminal._id, $scope.editCriminal)
+      .success(function(){
+        getCriminals();
+      });
+  }
 
 }])
