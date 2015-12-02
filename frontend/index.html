@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html ng-app = "criminalApp">
 <head>
   <title>Criminals</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src= "js/app.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
-<h1>Infamous Criminals</h1>
+<body ng-controller = "criminalCtrl">
+  <h1>Infamous Criminals</h1>
+  <ul id="criminal">
+    <li ng-repeat = "criminal in criminals">
+      <span class="status">{{criminal.status}}</span>
+      {{criminal.name}}
+      {{criminal.location}}
+      <button> delete </button>
+    </li>
+
+    <form id="newCriminal" ng-submit = "addCriminal()">
+      <div>
+        <label>Name:</label>
+        <input type="text" ng-model="newCriminal.name">
+      </div>
+      <div>
+        <label>Location:</label>
+        <input type="text" ng-model="newCriminal.location">
+      </div>
+      <div>
+        <label>Status:</label>
+        <input type="text" ng-model="newCriminal.status">
+      </div>
+      <div>
+        <input type="submit">
+      <div>
+    </form>
+
+  </ul>
 </body>
 </html>
