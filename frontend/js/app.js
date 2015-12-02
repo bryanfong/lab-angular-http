@@ -4,7 +4,7 @@ angular.module('criminalApp', [])
   $scope.criminals = [];
   $scope.newCriminal = {};
   $scope.addCriminal = addCriminal;
-  $scope.updateCriminal = updateCriminal;
+  $scope.deleteCriminal = deleteCriminal;
 
   getCriminals();
 
@@ -25,6 +25,13 @@ angular.module('criminalApp', [])
     $scope.newCriminal ={}
   }
 
+  function deleteCriminal(id){
+    $http
+      .delete('http://localhost:3000/criminals/' + id)
+      .success(function(response){
+        getCriminals();
+      })
+  }
 
 
 }])

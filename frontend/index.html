@@ -13,7 +13,7 @@
       <span class="status">{{criminal.status}}</span>
       {{criminal.name}}
       {{criminal.location}}
-      <button> delete </button>
+      <button ng-click="deleteCriminal(criminal._id)"> delete </button>
     </li>
 
     <form id="newCriminal" ng-submit = "addCriminal()">
